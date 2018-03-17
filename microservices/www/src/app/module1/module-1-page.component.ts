@@ -6,6 +6,8 @@ import { AngularFireStorage } from 'angularfire2/storage';
 import { MaterializeAction } from 'angular2-materialize';
 import { Listing } from 'app/module1/listing';
 import { MaterializeModule } from 'angular2-materialize';
+import { AngularFireAuth } from 'angularfire2/auth';
+import { NgModel } from '@angular/forms';
 
 
 @Component({
@@ -17,15 +19,19 @@ import { MaterializeModule } from 'angular2-materialize';
 export class Module1PageComponent {
 
   entries: Listing[];
+  currListing: Listing = new Listing(); 
 
 
   modalActions = new EventEmitter<string | MaterializeAction>();
 
-  constructor(private storage: AngularFireStorage) {
+  constructor(private storage: AngularFireStorage, private auth: AngularFireAuth) {
 
   }
 
   openModal() {
+    //populate currListing
+    this.currListing.authorid = this.auth.auth.currentUser.displayName;
+    this.currListing.authoremail = this.auth.auth.currentUser.email;
     this.modalActions.emit({ action: 'modal', params: ['open'] });
   }
   closeModal() {
@@ -44,6 +50,10 @@ export class Module1PageComponent {
     // observe percentage changes
     console.log(task.percentageChanges());
     // get notified when the download URL is available
-    console.log(task.downloadURL());
+    // console.log(task.downloadURL());
+    task.downloadURL().subscribe(data => {
+      this.currListing.imageRef = data;
+      console.log(data);
+    });
   }
 }

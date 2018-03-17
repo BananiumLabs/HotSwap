@@ -18,8 +18,13 @@
             <form class="col s12">
                 <div class="row">
                     <div class="input-field col s12">
-                        <input id="title" type="text" class="validate">
+                        <input name="title" [(ngModel)]="currListing.title" id="title" type="text" class="validate">
                         <label for="title">Listing Title</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col s12">
+                        <img *ngIf="currListing.imageRef !== undefined" src="{{currListing.imageRef}}" alt="" style="width:80%; height:20%;">
                     </div>
                 </div>
                 <div class="row">
@@ -30,13 +35,13 @@
                 </div>
                 <div class="row">
                     <div class="input-field col s12">
-                        <textarea id="textarea1" class="materialize-textarea validate"></textarea>
-                        <label for="textarea1">Description</label>
+                        <textarea name="description" [(ngModel)]="currListing.description" id="description" class="materialize-textarea validate"></textarea>
+                        <label for="description">Description</label>
                     </div>
                 </div>
                 <div class="row">
                     <div class="input-field col s12">
-                        <input placeholder="What do you want for this item?" id="swap" type="text" class="validate">
+                        <input name="swap" [(ngModel)]="currListing.swap" placeholder="What do you want for this item?" id="swap" type="text" class="validate">
                         <label for="swap">Swap For</label>
                     </div>
                 </div>
