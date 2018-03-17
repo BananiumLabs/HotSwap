@@ -2,12 +2,10 @@ FROM node:6
 
 #Install deps
 RUN npm install -g http-server
-RUN mkdir /app
-COPY package.json /app/package.json
+RUN mkdir /src
+COPY package.json /src/package.json
 
-WORKDIR /app
-
-RUN npm install
+WORKDIR /src
 
 #Add all source code
 ADD . . 
@@ -16,4 +14,4 @@ ADD . .
 RUN ng build 
 
 #Default command
-CMD ["/app/runserver.sh"]
+CMD ["/src/runserver.sh"]

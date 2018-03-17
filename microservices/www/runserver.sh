@@ -4,4 +4,4 @@
 # Date: 27.07.2017
 # Last Modified: 27.07.2017
 
-cd /app/dist && http-server -p 8080
+cd /src/dist && http-server -p 8080
