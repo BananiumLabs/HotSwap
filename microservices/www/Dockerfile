@@ -1,13 +1,12 @@
 FROM node:6
 
 #Install deps
-RUN npm install -g http-server
+RUN npm install -g http-server @angular/cli
 RUN mkdir /src
 COPY package.json /src/package.json
 
 WORKDIR /src
 RUN npm install
-RUN npm install -g @angular/cli
 
 #Add all source code
 ADD . /src
