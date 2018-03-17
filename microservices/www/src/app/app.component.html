@@ -1,16 +1,30 @@
 <!-- Top Navbar -->
 <div class="navbar-fixed">
     <nav>
-      <div class="nav-wrapper red">
+      <div class="nav-wrapper red ">
         
         <!-- Title -->
-        <a class="brand-logo flow-text" [routerLink]="['']">Angular2 Starter Template</a>
+        <a style="padding-left: 3rem;" class="flow-text" [routerLink]="['']">Angular2 Starter Template</a>
         
         <!-- Navbar Content -->
         <ul class="right">
-          <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><a [routerLink]="['']" class="flow-text">Home</a></li>
-          <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><a [routerLink]="['module1']" class="flow-text">Module One</a></li>
-          <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><a [routerLink]="['module2']" class="flow-text">Module Two</a></li>
+          <div *ngIf="isLoggedIn()">
+            <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+              <a [routerLink]="['']" class="flow-text">Home</a>
+            </li>
+            <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+              <a [routerLink]="['module1']" class="flow-text">Trades</a>
+            </li>
+            <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+              <a [routerLink]="['module2']" class="flow-text">Questions</a>
+            </li>
+            <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+              <a (click)="logout()" class="flow-text">Log Out</a>
+            </li>
+          </div>
+          <div *ngIf="!isLoggedIn()">
+            <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><a (click)="login()" class="flow-text">Login</a></li>
+          </div>
         </ul>
     </div>
   </nav>
