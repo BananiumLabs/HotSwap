@@ -1,7 +1,7 @@
-- alias: hasura
+- alias: live
   config:
     configmap: controller-conf
     namespace: hasura
   data: null
-  kubeContext: hotswap
-  name: hotswap
+  kubeContext: abandoned78
+  name: abandoned78
