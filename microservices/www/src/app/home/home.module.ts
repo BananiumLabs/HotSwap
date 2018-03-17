@@ -4,7 +4,6 @@ import { RouterModule } from '@angular/router';
 
 import { HomePageComponent } from 'app/home/home-page.component';
 
-
 @NgModule({
     declarations: [
         HomePageComponent
