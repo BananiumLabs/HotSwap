@@ -21,6 +21,7 @@ export class Module1PageComponent {
 
   entries: any;
   currListing: Listing = new Listing();
+  percentage: number = 0;
 
   modalActions = new EventEmitter<string | MaterializeAction>();
 
@@ -74,7 +75,10 @@ export class Module1PageComponent {
     const filePath = event.target.files[0].name;
     const task = this.storage.upload(filePath, file);
     // observe percentage changes
-    console.log(task.percentageChanges());
+    task.percentageChanges().subscribe(data => {
+      this.percentage = data;
+    })
+    
     // get notified when the download URL is available
     // console.log(task.downloadURL());
     task.downloadURL().subscribe(data => {
