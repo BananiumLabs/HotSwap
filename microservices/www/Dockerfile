@@ -4,7 +4,6 @@ FROM node:6
 RUN npm install -g http-server grunt-cli bower yo generator-karma generator-angular
 RUN mkdir /app
 COPY package.json /app/package.json
-COPY bower.json /app/bower.json
 
 WORKDIR /app
 
