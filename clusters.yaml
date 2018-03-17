@@ -3,5 +3,5 @@
     configmap: controller-conf
     namespace: hasura
   data: null
-  kubeContext: abandoned78
-  name: abandoned78
+  kubeContext: hotswap
+  name: hotswap
