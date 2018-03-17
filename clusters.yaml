@@ -5,3 +5,10 @@
   data: null
   kubeContext: abandoned78
   name: abandoned78
+- alias: hasura
+  config:
+    configmap: controller-conf
+    namespace: hasura
+  data: null
+  kubeContext: caduceus20
+  name: caduceus20
