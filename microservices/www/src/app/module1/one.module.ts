@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
-import { MaterializeModule } from "angular2-materialize";
+import { MaterializeModule } from 'angular2-materialize';
 import {Module1PageComponent} from 'app/module1/module-1-page.component';
 
 @NgModule({
@@ -18,7 +18,6 @@ import {Module1PageComponent} from 'app/module1/module-1-page.component';
     exports: [
         RouterModule
     ],
-    
 })
 export class ModuleOne {
 }
