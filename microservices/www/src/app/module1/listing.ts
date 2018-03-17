@@ -6,4 +6,5 @@ export class Listing {
     swap: string;
     imageRef: string; 
     type: string;
+    listDate: string;
 }

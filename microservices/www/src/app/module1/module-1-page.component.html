@@ -56,15 +56,25 @@
 
 <div class="row">
     <div class="col s12 m6" *ngFor="let entry of entries">
-        <div class="card blue-grey darken-1">
-            <div class="card-content white-text">
-                <span class="card-title">{{entry}}</span>
-                <p>I am a very simple card. I am good at containing small bits of information. I am convenient because I require
-                    little markup to use effectively.</p>
+        <div class="card">
+            <div class="card-image waves-effect waves-block waves-light">
+                <img class="activator" src="{{entry.imageRef}}">
             </div>
-            <div class="card-action">
-                <a href="#">This is a link</a>
-                <a href="#">This is a link</a>
+            <div class="card-content">
+                <span class="card-title activator grey-text text-darken-4">{{entry.title}}
+                    <i class="material-icons right">add</i>
+                </span>
+                <p>
+                    <a href="#">Posted by {{entry.authorid}} at {{entry.date}}</a>
+                </p>
+            </div>
+            <div class="card-reveal">
+                <span class="card-title grey-text text-darken-4">{{entry.title}}
+                    <i class="material-icons right">close</i>
+                </span>
+                <p>{{entry.description}}</p>
+                <a class="waves-effect btn blue" style="margin-right: 1rem">Contact Poster</a>
+
             </div>
         </div>
     </div>

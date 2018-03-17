@@ -39,7 +39,8 @@ export class Module1PageComponent {
   }
 
   add(item:string) {
-    // this.entries.push(item);
+    //Set list date
+    this.currListing.listDate = new Date().toDateString() + ' ' + new Date().toTimeString();
   }
   fileChange(event) {
     console.log('Upload Started!');
