@@ -8,6 +8,7 @@ import { Routes, RouterModule } from "@angular/router";
 import { MaterializeModule } from "angular2-materialize";
 import {HttpModule, JsonpModule, Jsonp, Response} from "@angular/http";
 
+
 import { AppComponent } from './app.component';
 
 //Put your module routes here

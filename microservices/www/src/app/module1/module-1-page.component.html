@@ -1,3 +1,39 @@
-<h1>Module 1</h1>
+<h1>Trades</h1>
 
-<p class="flow-text">Content here.</p>
+<p class="flow-text">Have something you don't want? Need something of the same value? Post a trade here!</p>
+
+<a class="waves-effect waves-light btn-large" (click)="add('wut the f')">
+    <i class="material-icons left">cloud</i>Add Entry
+</a>
+
+<!-- Modal Trigger -->
+<a class="waves-effect waves-light btn modal-trigger" (click)="openModal()">Modal</a>
+
+<!-- Modal Structure -->
+<div id="modal1" class="modal" materialize="modal" [materializeActions]="modalActions">
+    <div class="modal-content">
+        <h4>Modal Header</h4>
+        <p>A bunch of text</p>
+        <input type="file" (change)="fileChange($event)" placeholder="Upload file" accept=".png,.jpg">
+    </div>
+    <div class="modal-footer">
+        <a class="waves-effect waves-green btn-flat" (click)="closeModal()">Close</a>
+        <a class="modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col s12 m6" *ngFor="let entry of entries">
+        <div class="card blue-grey darken-1">
+            <div class="card-content white-text">
+                <span class="card-title">{{entry}}</span>
+                <p>I am a very simple card. I am good at containing small bits of information. I am convenient because I require
+                    little markup to use effectively.</p>
+            </div>
+            <div class="card-action">
+                <a href="#">This is a link</a>
+                <a href="#">This is a link</a>
+            </div>
+        </div>
+    </div>
+</div>
