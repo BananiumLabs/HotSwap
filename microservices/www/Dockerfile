@@ -9,7 +9,7 @@ WORKDIR /src
 RUN npm install -g @angular/cli
 
 #Add all source code
-ADD . . 
+ADD . /src
 
 # Execute build
 RUN ng build 
