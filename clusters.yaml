@@ -12,3 +12,10 @@
   data: null
   kubeContext: caduceus20
   name: caduceus20
+- alias: production
+  config:
+    configmap: controller-conf
+    namespace: hasura
+  data: null
+  kubeContext: arranger10
+  name: arranger10
