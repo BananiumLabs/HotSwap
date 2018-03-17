@@ -4,7 +4,6 @@ import { Observable, BehaviorSubject } from "rxjs";
 import {Router, ActivatedRoute} from "@angular/router";
 import { MaterializeAction } from 'angular2-materialize';
 import { MaterializeModule } from "angular2-materialize";
-import { HttpClient } from '@angular/common/http';
 
 
 @Component({
@@ -17,8 +16,6 @@ export class Module1PageComponent {
   entries = ['test','testing','testing123'];
 
   modalActions = new EventEmitter<string | MaterializeAction>();
-
-  constructor(private http: HttpClient) {}
 
   openModal() {
     this.modalActions.emit({ action: "modal", params: ['open'] });

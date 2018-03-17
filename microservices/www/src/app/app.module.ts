@@ -15,6 +15,7 @@ import { AngularFireAuthModule } from 'angularfire2/auth';
 
 
 import { AppComponent } from './app.component';
+import { HttpClientModule } from '@angular/common/http';
 
 //Put your module routes here
 const routes: Routes = [
@@ -46,7 +47,8 @@ const routes: Routes = [
     declarations: [
         AppComponent
     ],
-    bootstrap: [AppComponent]
+    bootstrap: [AppComponent],
+    providers: [HttpClientModule]
 })
 export class AppModule {
 }
