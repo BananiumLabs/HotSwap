@@ -22,6 +22,7 @@ export class Module1PageComponent {
   entries: any;
   currListing: Listing = new Listing();
   percentage: number = 0;
+  search: string = "";
 
   modalActions = new EventEmitter<string | MaterializeAction>();
 
@@ -78,7 +79,7 @@ export class Module1PageComponent {
     task.percentageChanges().subscribe(data => {
       this.percentage = data;
     })
-    
+
     // get notified when the download URL is available
     // console.log(task.downloadURL());
     task.downloadURL().subscribe(data => {

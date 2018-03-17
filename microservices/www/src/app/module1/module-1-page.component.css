@@ -1,0 +1,22 @@
+/* Search bar formatting */
+.noline {
+  border-bottom-width: 0px !important;
+  border-bottom: none !important;
+}
+
+.noline ::after {
+    border-bottom-width: 0px !important;
+}
+
+#widget-search {
+  margin-left: 3rem;
+  margin-top: 0;
+}
+
+#widget-search-form {
+  padding: 0.5rem;
+}
+
+.notop {
+    margin-top: 0 !important;
+}
