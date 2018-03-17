@@ -2,23 +2,50 @@
 
 <p class="flow-text">Have something you don't want? Need something of the same value? Post a trade here!</p>
 
-<a class="waves-effect waves-light btn-large" (click)="add('wut the f')">
-    <i class="material-icons left">cloud</i>Add Entry
+<a class="waves-effect waves-light btn-large modal-trigger red" (click)="openModal()">
+    <i class="material-icons left">add</i>New Listing
 </a>
-
-<!-- Modal Trigger -->
-<a class="waves-effect waves-light btn modal-trigger" (click)="openModal()">Modal</a>
 
 <!-- Modal Structure -->
 <div id="modal1" class="modal" materialize="modal" [materializeActions]="modalActions">
     <div class="modal-content">
-        <h4>Modal Header</h4>
-        <p>A bunch of text</p>
-        <input type="file" (change)="fileChange($event)" placeholder="Upload file" accept=".png,.jpg">
+        <h4>New Listing</h4>
+
+        <div class="row">
+            
+        </div>
+        <div class="row">
+            <form class="col s12">
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input id="title" type="text" class="validate">
+                        <label for="title">Listing Title</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col s12">
+                        Select a cover image
+                        <input class="col s12" type="file" (change)="fileChange($event)" placeholder="Upload Image" accept=".png,.jpg">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12">
+                        <textarea id="textarea1" class="materialize-textarea validate"></textarea>
+                        <label for="textarea1">Description</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input placeholder="What do you want for this item?" id="swap" type="text" class="validate">
+                        <label for="swap">Swap For</label>
+                    </div>
+                </div>
+            </form>
+        </div>
     </div>
     <div class="modal-footer">
-        <a class="waves-effect waves-green btn-flat" (click)="closeModal()">Close</a>
-        <a class="modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
+        <a class="waves-effect waves-red btn-flat" (click)="closeModal()">Close</a>
+        <a class="modal-action modal-close waves-effect btn green" style="margin-right: 1rem">Submit</a>
     </div>
 </div>
 

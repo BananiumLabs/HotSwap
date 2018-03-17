@@ -4,6 +4,7 @@ import { Observable, BehaviorSubject } from "rxjs";
 import {Router, ActivatedRoute} from "@angular/router";
 import { MaterializeAction } from 'angular2-materialize';
 import { MaterializeModule } from "angular2-materialize";
+import { Listing } from 'app/module1/listing';
 
 
 @Component({
@@ -13,7 +14,7 @@ import { MaterializeModule } from "angular2-materialize";
 
 })
 export class Module1PageComponent {
-  entries = ['test','testing','testing123'];
+  entries: Listing[];
 
   modalActions = new EventEmitter<string | MaterializeAction>();
 
@@ -25,6 +26,6 @@ export class Module1PageComponent {
   }
 
   add(item:string) {
-    this.entries.push(item);
+    // this.entries.push(item);
   }
 }

@@ -5,4 +5,5 @@ export class Listing {
     description: string;
     swap: string;
     imageRef: string; 
+    type: string;
 }
