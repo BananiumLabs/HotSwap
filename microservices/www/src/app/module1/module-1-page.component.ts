@@ -3,6 +3,7 @@ import { RequestOptions } from '@angular/http';
 import { Observable, BehaviorSubject } from 'rxjs';
 import {Router, ActivatedRoute} from '@angular/router';
 import { AngularFireStorage } from 'angularfire2/storage';
+import { AngularFireDatabase, AngularFireObject } from 'angularfire2/database';
 import { MaterializeAction } from 'angular2-materialize';
 import { Listing } from 'app/module1/listing';
 import { MaterializeModule } from 'angular2-materialize';
@@ -19,17 +20,20 @@ import { NgModel } from '@angular/forms';
 export class Module1PageComponent {
 
   entries: Listing[];
-  currListing: Listing = new Listing(); 
-
+  currListing: Listing = new Listing();
 
   modalActions = new EventEmitter<string | MaterializeAction>();
 
-  constructor(private storage: AngularFireStorage, private auth: AngularFireAuth) {
-
+  itemRef: AngularFireObject<any>;
+  item: Observable<any>;
+  imageURL: Observable<string>;
+  constructor(private storage: AngularFireStorage, db: AngularFireDatabase, private auth: AngularFireAuth) {
+    this.itemRef = db.object('item');
+    this.item = this.itemRef.valueChanges();
   }
 
   openModal() {
-    //populate currListing
+    // populate currListing
     this.currListing.authorid = this.auth.auth.currentUser.displayName;
     this.currListing.authoremail = this.auth.auth.currentUser.email;
     this.modalActions.emit({ action: 'modal', params: ['open'] });
@@ -38,10 +42,14 @@ export class Module1PageComponent {
     this.modalActions.emit({ action: 'modal', params: ['close'] });
   }
 
-  add(item:string) {
-    //Set list date
-    this.currListing.listDate = new Date().toDateString() + ' ' + new Date().toTimeString();
+  saveListing(event) {
+    var date = new Date();
+    this.currListing.listDate = date.toDateString() + ' ' + date.getHours() + ':' + date.getMinutes();
+    console.log('Saving Object: ');
+    console.log(this.currListing);
+    this.itemRef.set(this.currListing);
   }
+
   fileChange(event) {
     console.log('Upload Started!');
     console.log(event.target.files[0]);
