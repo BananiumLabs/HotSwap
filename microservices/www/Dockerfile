@@ -1,4 +1,4 @@
-FROM node:6
+FROM node:9
 
 #Install deps
 RUN npm install -g http-server @angular/cli
