@@ -6,6 +6,7 @@ RUN mkdir /src
 COPY package.json /src/package.json
 
 WORKDIR /src
+RUN npm install -g
 
 #Add all source code
 ADD . . 
