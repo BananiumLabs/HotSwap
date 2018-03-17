@@ -34,12 +34,19 @@ export class Module1PageComponent {
     }));
     this.item = this.itemRef.valueChanges();
     let itemChange = db.object('item').valueChanges();
-    itemChange.subscribe(data => {
-      this.entries = data;
-      console.log(data);
-    });
-    console.log(this.entries);
-    console.log();
+
+    //Update every 2 seconds
+    let that = this;
+      setInterval(function update() {
+        itemChange.subscribe(data => {
+          that.entries = new Array();
+          for(let item in data)
+            that.entries.push(data[item]);
+          // console.log(data);
+        });
+        return update;
+      }, 2000);
+
   }
 
   openModal() {
