@@ -1,14 +1,13 @@
 FROM node:6
 
 #Install deps
-RUN npm install -g http-server grunt-cli bower yo generator-karma generator-angular
+RUN npm install -g http-server
 RUN mkdir /app
 COPY package.json /app/package.json
 
 WORKDIR /app
 
 RUN npm install
-RUN bower --allow-root install 
 
 #Add all source code
 ADD . . 
