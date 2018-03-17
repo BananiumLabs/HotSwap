@@ -6,6 +6,7 @@ RUN mkdir /src
 COPY package.json /src/package.json
 
 WORKDIR /src
+RUN npm install
 RUN npm install -g @angular/cli
 
 #Add all source code
