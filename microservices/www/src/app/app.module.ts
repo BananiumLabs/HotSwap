@@ -21,7 +21,8 @@ import { HttpClientModule } from '@angular/common/http';
 const routes: Routes = [
     { path: '', loadChildren: 'app/home/home.module#HomeModule' },
     { path: 'module1', loadChildren: 'app/module1/one.module#ModuleOne' },
-    { path: 'module2', loadChildren: 'app/module2/two.module#ModuleTwo' }
+    { path: 'module2', loadChildren: 'app/module2/two.module#ModuleTwo' },
+    { path: 'module3', loadChildren: 'app/module3/three.module#ModuleThree' }
 ]
 
 // Don't forget to import everything!
