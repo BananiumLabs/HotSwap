@@ -1,0 +1,76 @@
+<h1>Your Inbox</h1>
+
+<div class="row">
+    <div class="col s4">
+        <a class="waves-effect waves-light btn-large modal-trigger red" (click)="openModal()" style="width:100%;">
+            <i class="material-icons left">add</i>Compose Message
+        </a>
+    </div>
+</div>
+
+
+<!-- Modal Structure -->
+<div id="modal1" class="modal" materialize="modal" [materializeActions]="modalActions">
+    <div class="modal-content">
+        <h4>Compose Message</h4>
+
+        <div class="row">
+
+        </div>
+        <div class="row">
+            <form class="col s12">
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input name="swap" [(ngModel)]="currListing.swap" placeholder="Enter The Receipient Username" id="swap" type="text" class="validate">
+                        <label for="swap">To</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input name="title" [(ngModel)]="currListing.title" id="title" type="text" class="validate">
+                        <label for="title">Subject</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12">
+                        <textarea name="description" [(ngModel)]="currListing.description" id="description" class="materialize-textarea validate"></textarea>
+                        <label for="description">Message</label>
+                    </div>
+                </div>
+                
+            </form>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <a class="waves-effect waves-red btn-flat" (click)="closeModal()">Close</a>
+        <a class="modal-action modal-close waves-effect btn green" style="margin-right: 1rem" (click)="saveListing()">Submit</a>
+    </div>
+</div>
+
+<div class="row">
+    <div *ngFor="let entry of entries">
+        <div class="col s12 m6" *ngIf="entry.title.toLowerCase().includes(search.toLowerCase())">
+            <div class="card">
+                <div class="card-image waves-effect waves-block waves-light">
+                    <img class="activator" src="{{entry.imageRef}}">
+                </div>
+                <div class="card-content">
+                    <span class="card-title activator grey-text text-darken-4">{{entry.title}}
+                        <i class="material-icons right">add</i>
+                    </span>
+                    <p>
+                        <a href="#">Posted by {{entry.authorid}} at {{entry.listDate}}</a>
+                    </p>
+                </div>
+                <div class="card-reveal">
+                    <span class="card-title grey-text text-darken-4">{{entry.title}}
+                        <i class="material-icons right">close</i>
+                    </span>
+                    <p>{{entry.description}}</p>
+                    <a class="waves-effect btn blue" style="margin-right: 1rem">Contact Poster</a>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
