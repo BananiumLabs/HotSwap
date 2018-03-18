@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Observable, BehaviorSubject } from "rxjs";
 import {Router, ActivatedRoute} from "@angular/router";
+import { AngularFireAuth } from 'angularfire2/auth';
 
 
 
@@ -11,5 +12,13 @@ import {Router, ActivatedRoute} from "@angular/router";
 
 })
 export class HomePageComponent {
- 
+  
+  constructor(private auth: AngularFireAuth) {}
+
+  getName() {
+    if(this.auth.auth.currentUser !== null)
+      return this.auth.auth.currentUser.displayName;
+    
+    return 'Anonymous';
+  }
 }

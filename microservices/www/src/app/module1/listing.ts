@@ -1,4 +1,5 @@
 export class Listing {
+    id: string;
     title: string;
     authorid: string;
     authoremail: string;
