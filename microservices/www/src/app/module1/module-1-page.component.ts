@@ -30,15 +30,20 @@ export class Module1PageComponent {
   item: Observable<any>;
   imageURL: Observable<string>;
   constructor(private storage: AngularFireStorage, db: AngularFireDatabase, private auth: AngularFireAuth) {
-    this.itemRef = db.object('item/' + 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
+    let that = this;
+
+    var id = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
       var r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);
       return v.toString(16);
-    }));
+    })
+
+    this.itemRef = db.object('item/' + id);
+    this.currListing.id = id;
     this.item = this.itemRef.valueChanges();
     let itemChange = db.object('item').valueChanges();
 
     //Update every 2 seconds
-    let that = this;
+    
       setInterval(function update() {
         itemChange.subscribe(data => {
           that.entries = new Array();
