@@ -13,10 +13,8 @@ import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { AngularFireStorageModule } from 'angularfire2/storage';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
-import {NbThemeModule} from '@nebular/theme';
 import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
-import { NbSidebarModule, NbLayoutModule, NbSidebarService } from '@nebular/theme';
 
 
 // Put your module routes here
@@ -43,9 +41,6 @@ const routes: Routes = [
         AngularFireAuthModule, // imports firebase/auth, only needed for auth features,
         AngularFireStorageModule, // imports firebase/storage only needed for storage features
         AngularFireDatabaseModule,
-        NbThemeModule.forRoot({ name: 'default' }),
-        NbLayoutModule,
-        NbSidebarModule,
     ],
     exports: [
         RouterModule
@@ -54,7 +49,7 @@ const routes: Routes = [
         AppComponent
     ],
     bootstrap: [AppComponent],
-    providers: [HttpClientModule, NbSidebarService]
+    providers: [HttpClientModule]
 })
 export class AppModule {
 }
