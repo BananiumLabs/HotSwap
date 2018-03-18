@@ -54,7 +54,7 @@ export class Module3PageComponent {
         setTimeout(function() {
           if (params.title !== undefined && params.title !== null)
             that.openModal();
-        }, 500)
+        }, 100)
       });
 
     //Update every 2 seconds
