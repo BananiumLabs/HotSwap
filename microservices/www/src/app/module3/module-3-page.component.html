@@ -69,7 +69,6 @@
                         <i class="material-icons right">close</i>
                     </span>
                     <p>{{entry.description}}</p>
-                    <a class="waves-effect btn blue" style="margin-right: 1rem">Contact Poster</a>
 
                 </div>
             </div>
@@ -98,7 +97,7 @@
                         <i class="material-icons right">close</i>
                     </span>
                     <p>{{entry.description}}</p>
-                    <a class="waves-effect btn blue" style="margin-right: 1rem">Reply</a>
+                    <a [routerLink]="['/module3']" [queryParams]="{ mail: entry.authoremail, title: entry.title }" class="waves-effect btn blue" style="margin-right: 1rem">Reply</a>
 
                 </div>
             </div>

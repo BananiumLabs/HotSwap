@@ -35,6 +35,13 @@ export class Module3PageComponent {
     private router: Router) {
     
     this.currentmail = this.auth.auth.currentUser.email;
+    this.itemRef = db.object('message/' + 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
+      var r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);
+      return v.toString(16);
+    }));
+    this.item = this.itemRef.valueChanges();
+    let itemChange = db.object('message').valueChanges();
+
     let sub = this.route
       .queryParams
       .subscribe(params => {
@@ -47,16 +54,8 @@ export class Module3PageComponent {
         setTimeout(function() {
           if (params.title !== undefined && params.title !== null)
             that.openModal();
-        }, 2000)
-        
+        }, 500)
       });
-
-    this.itemRef = db.object('message/' + 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
-      var r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);
-      return v.toString(16);
-    }));
-    this.item = this.itemRef.valueChanges();
-    let itemChange = db.object('message').valueChanges();
 
     //Update every 2 seconds
     let that = this;
