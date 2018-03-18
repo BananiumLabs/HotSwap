@@ -23,6 +23,7 @@ export class Module3PageComponent {
   currListing: Listing = new Listing();
   percentage: number = 0;
   search: string = "";
+  currentmail: string;
 
   modalActions = new EventEmitter<string | MaterializeAction>();
 
@@ -30,6 +31,7 @@ export class Module3PageComponent {
   item: Observable<any>;
   imageURL: Observable<string>;
   constructor(private storage: AngularFireStorage, db: AngularFireDatabase, private auth: AngularFireAuth) {
+    this.currentmail = this.auth.auth.currentUser.email;
     this.itemRef = db.object('message/' + 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
       var r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);
       return v.toString(16);
