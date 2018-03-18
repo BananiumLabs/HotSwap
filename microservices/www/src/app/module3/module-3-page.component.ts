@@ -1,7 +1,7 @@
 import { Component, EventEmitter } from '@angular/core';
 import { RequestOptions } from '@angular/http';
 import { Observable, BehaviorSubject } from 'rxjs';
-import { Router, ActivatedRoute } from '@angular/router';
+import { Router, ActivatedRoute,  } from '@angular/router';
 import { AngularFireStorage } from 'angularfire2/storage';
 import { AngularFireDatabase, AngularFireObject } from 'angularfire2/database';
 import { MaterializeAction } from 'angular2-materialize';
@@ -24,14 +24,33 @@ export class Module3PageComponent {
   percentage: number = 0;
   search: string = "";
   currentmail: string;
-
+  optTitle: string;
+  optTo: string;
   modalActions = new EventEmitter<string | MaterializeAction>();
 
   itemRef: AngularFireObject<any>;
   item: Observable<any>;
   imageURL: Observable<string>;
-  constructor(private storage: AngularFireStorage, db: AngularFireDatabase, private auth: AngularFireAuth) {
+  constructor(private storage: AngularFireStorage, db: AngularFireDatabase, private auth: AngularFireAuth, private route: ActivatedRoute,
+    private router: Router) {
+    
     this.currentmail = this.auth.auth.currentUser.email;
+    let sub = this.route
+      .queryParams
+      .subscribe(params => {
+        // Defaults to 0 if no query param provided.
+        console.log(params);
+        this.currListing.title = params.title;
+        this.currListing.swap = params.mail;
+
+        let that = this;
+        setTimeout(function() {
+          if (params.title !== undefined && params.title !== null)
+            that.openModal();
+        }, 2000)
+        
+      });
+
     this.itemRef = db.object('message/' + 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
       var r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);
       return v.toString(16);
